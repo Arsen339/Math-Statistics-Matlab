@@ -101,45 +101,45 @@ Y = [4.66
 5.08
 5.39 ]
 
-% Количество элементов
+% Amount of elements
 n = 50;
 
 
 
 
-% Вычислим выборочные средние
-fprintf('Негруппированная выборка:')
-fprintf('Выборочное среднее X\n')
+% Numerical characteristics
+fprintf('Ungrouped sample:')
+fprintf('Mean of X\n')
 x = 1/n*sum(X)
-fprintf('Выборочное среднее Y\n')
+fprintf('Mean of Y\n')
 y = 1/n*sum(Y)
-fprintf('Исправленная дисперсия для Х\n')
+fprintf('Corrected dispersionfor Х\n')
 S2X = 1/(n-1)*(sum(X.^2) - n*x^2)
-fprintf('Исправленная дисперсия для Y\n')
+fprintf('Corrected dispersionfor for Y\n')
 S2Y = 1/(n-1)*(sum(Y.^2) - n*y^2)
-fprintf('Ковариация\n')
+fprintf('COV\n')
 s=0;
 for i=1:50
   s=s+X(i)*Y(i);
 end
 COVXY = 1/(n-1)*(s-n*x*y)
-fprintf('Выборочный коэффициент корелляции\n')
+fprintf('Selective correlation coefficient\n')
 Po = COVXY/(sqrt(S2X)*sqrt(S2Y))
 
 
 
-fprintf('Группированная выборка:')
-fprintf('Выборочное среднее X\n')
+fprintf('Grouped sample:')
+fprintf('Mean of X\n')
 x_grouped = 5.62
-fprintf('Выборочное среднее Y\n')
+fprintf('Mean of Y\n')
 y_gruoped = 5.06
-fprintf('Исправленная дисперсия для Х\n')
+fprintf('Corrected dispersion for Х\n')
 S2X_grouped = 0.243
-fprintf('Исправленная дисперсия для Y\n')
+fprintf('Corrected dispersion for Y\n')
 S2Y_grouped = 0.3152
-fprintf('Ковариация\n')
+fprintf('COV\n')
 COVXY_grouped = 0.506
-fprintf('Выборочный коэффициент корелляции\n')
+fprintf('Selective correlation coefficient\n')
 Po_grouped = 1.8283
 
 
@@ -154,25 +154,22 @@ plot(xo,yo,'r')
 axis([4.5 6 2.5 6])
 
 
-% построим линейную регрессию Y на х
+%Linear regression Y on X
 xcord = [4.25:0.01:6.75];
 ycord = 1.1305.*xcord-1.2675;
 plot(xcord,ycord,'-b')
-%axis([4.25 6.75 3.75 6.25])
-% построим линейную регрессию Х на у
+%Linear regression Х on у
 xcord = [4.25:0.01:6.75];
 ycord = (xcord-1.311)/0.8496;
-%plot(xcord,ycord,'-k');
-%axis([4.25 6.75 3.75 6.25]);
 Qe = 0;
 for i=1:50
   Qe=Qe+((1.1305*X(i)-1.2675)-Y(i))^2;
 end
-fprintf('Остаточная сумма квадратов для негрупп. данных\n')
+fprintf('Residual sum of squares\n')
 Qe
 fprintf('Qy\n')
 Qy=sum(Y.^2)-y*5.0472
-fprintf('Коэффициент детерминации\n')
+fprintf('Determination coefficient\n')
 R=1-Qe/Qy
 
 summa=0;

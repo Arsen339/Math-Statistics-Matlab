@@ -118,7 +118,7 @@ S2X = 1/(n-1)*(sum(X.^2) - n*x^2)
 fprintf('Corrected dispersionfor for Y\n')
 S2Y = 1/(n-1)*(sum(Y.^2) - n*y^2)
 fprintf('COV\n')
-s=0;
+s = 0;
 for i=1:50
   s=s+X(i)*Y(i);
 end
@@ -145,40 +145,40 @@ Po_grouped = 1.8283
 
 plot(X,Y,'.r')
 grid on;hold on;
-xo=[4:0.01:7]
-yo=1.1305.*xo-1.2675+2.0106*sqrt(0.0126*(1/50+(xo-5.5856).^2/(49*0.2171)))
+xo = [4:0.01:7]
+yo = 1.1305.*xo-1.2675+2.0106*sqrt(0.0126*(1/50+(xo-5.5856).^2/(49*0.2171)))
 plot(xo,yo,'r')
-yo=1.1305.*xo-1.2675-2.0106*sqrt(0.0126*(1/50+(xo-5.5856).^2/(49*0.2171)))
+yo = 1.1305.*xo-1.2675-2.0106*sqrt(0.0126*(1/50+(xo-5.5856).^2/(49*0.2171)))
 plot(xo,yo,'r')
 
 axis([4.5 6 2.5 6])
 
 
-%Linear regression Y on X
+% Linear regression Y on X
 xcord = [4.25:0.01:6.75];
 ycord = 1.1305.*xcord-1.2675;
 plot(xcord,ycord,'-b')
-%Linear regression Õ on ó
+% Linear regression Õ on ó
 xcord = [4.25:0.01:6.75];
 ycord = (xcord-1.311)/0.8496;
 Qe = 0;
 for i=1:50
-  Qe=Qe+((1.1305*X(i)-1.2675)-Y(i))^2;
+  Qe = Qe+((1.1305*X(i)-1.2675)-Y(i))^2;
 end
 fprintf('Residual sum of squares\n')
 Qe
 fprintf('Qy\n')
-Qy=sum(Y.^2)-y*5.0472
+Qy = sum(Y.^2)-y*5.0472
 fprintf('Determination coefficient\n')
-R=1-Qe/Qy
+R = 1-Qe/Qy
 
-summa=0;
+summa = 0;
 N=0;
 for i=1:50
-if X(i)>5.5 && X(i)<6
+if X(i) > 5.5 && X(i) < 6
 Y(i);
-summa=summa+Y(i);
-N=N+1;
+summa = summa+Y(i);
+N = N+1;
 end
 end
 summa;
@@ -187,47 +187,47 @@ summa/N;
 
 
 
-yimas=[4.07 4.2825 4.6958 5.17 5.4733 6.01];
-nmas=[1 4 12 22 10 1];
-ximas=[4.25 4.75 5.25 5.75 6.26 6.75];
-summa=0;
+yimas = [4.07 4.2825 4.6958 5.17 5.4733 6.01];
+nmas = [1 4 12 22 10 1];
+ximas = [4.25 4.75 5.25 5.75 6.26 6.75];
+summa = 0;
 for i=1:6
-    summa=summa+yimas(i)*nmas(i);
+    summa = summa+yimas(i)*nmas(i);
 end
-res=summa/50;
+res = summa/50;
 
-ximas=[4.25 4.75 5.25 5.75 6.26 6.75];
-summa=0;
+ximas = [4.25 4.75 5.25 5.75 6.26 6.75];
+summa  =0;
 for i=1:6
-    summa=summa+ximas(i)*nmas(i);
+    summa = summa+ximas(i)*nmas(i);
 end
-res=summa/50;
+res = summa/50;
 sx2=0;
 for i=1:6;
     sx2=sx2+ximas(i)^2*nmas(i);
 end
-result=1/50*(sx2-50*5.64*5.64);
+result = 1/50*(sx2-50*5.64*5.64);
 
 sy2=0;
 for i=1:6;
     sy2=sy2+ximas(i)^2*nmas(i);
 end
 result=1/50*(sy2-50*5.04*5.04);
-Kov=(4.25*2.07*1+4.75*4.2825*4+5.25*4.6958*12+5.75*22*5.17+6.25*10*5.4733+6.75*1*6.01-50*5.04*5.64)/50
+Kov = (4.25*2.07*1+4.75*4.2825*4+5.25*4.6958*12+5.75*22*5.17+6.25*10*5.4733+6.75*1*6.01-50*5.04*5.64)/50
 
-yj=0.1029.*ximas+4.4598
-localsum=0;
+yj = 0.1029.*ximas+4.4598
+localsum = 0;
 for i = 1:50
     if X(i) > 6.5 && X(i)<7
-        localsum=localsum+(Y(i)-4.9486)^2;
+        localsum = localsum+(Y(i)-4.9486)^2;
     end
 end
 localsum;
 
-localsum=0;
+localsum = 0;
 for i = 1:50
     if X(i) > 6.5 && X(i)<7
-        localsum=localsum+1*(Y(i)-4.9486)^2;
+        localsum = localsum+1*(Y(i)-4.9486)^2;
     end
 end
 localsum
